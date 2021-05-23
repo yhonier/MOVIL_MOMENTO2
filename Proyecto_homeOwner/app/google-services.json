@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "375586066107",
+    "project_id": "proyecto-homeowner-3842c",
+    "storage_bucket": "proyecto-homeowner-3842c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:375586066107:android:1e5a417a2f1d477ca6639e",
+        "android_client_info": {
+          "package_name": "com.homeowner.cesde"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "375586066107-hf65mlkvc8pclavn0s6grkghf6ec17a0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMm1JgP2qC8PzSH-hEyD6Oou5OWjsbZyc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "375586066107-hf65mlkvc8pclavn0s6grkghf6ec17a0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
