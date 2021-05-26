@@ -129,18 +129,19 @@ public class UsuarioActivity extends AppCompatActivity {
                                 .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        //Toast.makeText(getApplicationContext(),"Por favor crear cuenta con otro nombre de usuario",Toast.LENGTH_LONG).show();
-                                        dialog.dismiss();
+                                   dialog.dismiss();
                                     }
                                 }).show();
-
-
-
                     }
                 });
-
-
-
+                holder.jbtnEditar.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent= new Intent(UsuarioActivity.this,editarAptoActivity.class);
+                        intent.putExtra("id",id);
+                        startActivity(intent);
+                    }
+                });
 
 
                   holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -149,8 +150,6 @@ public class UsuarioActivity extends AppCompatActivity {
 
                      }
                   });
-
-
 
 
             }
@@ -178,7 +177,7 @@ public class UsuarioActivity extends AppCompatActivity {
     static class ApartamentsViewHolder extends RecyclerView.ViewHolder{
 
         TextView tvPais,tvciudad,tvDireccion,tvNhabitaciones,tvVnoche,TvEstado,tvDescripcion;
-        Button jbtnEliminar;
+        Button jbtnEliminar, jbtnEditar;
 
         public ApartamentsViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -191,6 +190,7 @@ public class UsuarioActivity extends AppCompatActivity {
           TvEstado=itemView.findViewById(R.id.TvEstado);
           tvDescripcion=itemView.findViewById(R.id.tvDescripcion);
           jbtnEliminar= itemView.findViewById(R.id.btnEliminar);
+          jbtnEditar=itemView.findViewById(R.id.btnEditar);
 
 
 

@@ -3,13 +3,11 @@ package com.homeowner.cesde;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -19,43 +17,41 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class RegistroAptoActivity extends AppCompatActivity {
+public class editarAptoActivity extends AppCompatActivity {
 
-    TextView jtvRol,jtvNombre,jtvEmail;
-    EditText jetPais1,jetCiudad1,jetDireccion,jetPrecio,jetDescripcion,jetHabitaciones;
-    Button jbtnCrear,jbtnRegresar;
-    String email;
+    EditText jetPais,jetCiudad1,jetDireccion,jetHabitaciones1,jetPrecio1,jetDescripcion;
+    Button jbtnActualizar,jbtnRegresar;
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-    FirebaseFirestore db2 = FirebaseFirestore.getInstance();
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registro_apto);
+        setContentView(R.layout.activity_editar_apto);
 
-        jtvRol= findViewById(R.id.tvRol);
-        jtvNombre=findViewById(R.id.tvNombre);
-        jtvEmail=findViewById(R.id.tvEmail);
-        jbtnRegresar=findViewById(R.id.btnRegresar);
-        jetPais1=findViewById(R.id.etPais1);
+        jetPais=findViewById(R.id.etPais1);
         jetCiudad1=findViewById(R.id.etCiudad1);
-        jetPrecio=findViewById(R.id.etPrecio);
-        jetDescripcion=findViewById(R.id.etDescripcion);
         jetDireccion=findViewById(R.id.etDireccion);
+        jetHabitaciones1=findViewById(R.id.etHabitaciones1);
+        jetPrecio1=findViewById(R.id.etPrecio1);
+        jetDescripcion=findViewById(R.id.etDescripcion);
+        jbtnActualizar=findViewById(R.id.btnActualizar1);
         jbtnRegresar=findViewById(R.id.btnRegresar);
-        jbtnCrear=findViewById(R.id.btnActualizar1);
-        jetHabitaciones=findViewById(R.id.etHabitaciones);
 
 
 
-        //jtvEmail.setText("Apartamentes: "+getIntent().getStringExtra("coleccion"));
 
-        DocumentReference docRef = db.collection("users").document(getIntent().getStringExtra("coleccion"));
+        String apto=getIntent().getStringExtra("id");
+
+
+        DocumentReference docRef = db.collection("Apartaments").document(apto);
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -63,52 +59,54 @@ public class RegistroAptoActivity extends AppCompatActivity {
                     DocumentSnapshot document = task.getResult();
                     if (document.exists()) {
                         Log.d("Mensaje1", "DocumentSnapshot data: " + document.getData());
-                        String nombre=document.getString("Name");
-                        String rol=document.getString("Rol");
+                        String pais=document.getString("country");
+                        String ciudad=document.getString("city");
+                        String direccion=document.getString("adress");
+                        String habitaciones=document.getString("bedrooms");
+                        String precio=document.getString("priceNight");
+                        String descripcion=document.getString("description");
 
-                        jtvNombre.setText(nombre);
-                        jtvRol.setText("Rol: "+rol);
+                        jetPais.setText(pais);
+                        jetCiudad1.setText(ciudad);
+                        jetDireccion.setText(direccion);
+                        jetHabitaciones1.setText(habitaciones);
+                        jetPrecio1.setText(precio);
+                        jetDescripcion.setText(descripcion);
+
 
                     } else {
                         Log.d("mensaje2", "No such document");
                     }
                 } else {
-                    Log.d("Mensaje3", "get failed with ", task.getException());
+                    Log.d("No conecta a la Bd", "get failed with ", task.getException());
                 }
             }
         });
 
-
-    }
-
-    public void Regresar(View view){
-
-        Intent intent= new Intent(getApplicationContext(),UsuarioActivity.class);
-
-        startActivity(intent);
-
     }
 
 
-    public void CrearApto(View view){
 
+ /*   public void actualizarApto (View view){
+
+        Toast.makeText(getApplicationContext(),"boton presionado", Toast.LENGTH_SHORT).show();
 
         final String country,city,adress,cost, bedrooms,description,owner;
 
-        country= jetPais1.getText().toString();
+        country= jetPais.getText().toString();
         city=jetCiudad1.getText().toString();
         adress=jetDireccion.getText().toString();
-        cost=jetPrecio.getText().toString();
+        cost=jetPrecio1.getText().toString();
         description=jetDescripcion.getText().toString();
-        bedrooms=jetHabitaciones.getText().toString();
+        bedrooms=jetHabitaciones1.getText().toString();
 
-        owner=getIntent().getStringExtra("coleccion");
+
 
 
         if (country.isEmpty() ){
 
             Toast.makeText(getApplicationContext(),"El campo 'Pais' debe ser diligenciado",Toast.LENGTH_LONG).show();
-            jetPais1.requestFocus();
+            jetPais.requestFocus();
         }
         else if (city.isEmpty()){
             Toast.makeText(getApplicationContext(),"El campo 'Ciudad' debe ser diligenciado",Toast.LENGTH_LONG).show();
@@ -122,19 +120,19 @@ public class RegistroAptoActivity extends AppCompatActivity {
         }
         else if (bedrooms.isEmpty()){
             Toast.makeText(getApplicationContext(),"Debe ingresar la cantidad de habitaciones",Toast.LENGTH_LONG).show();
-            jetHabitaciones.requestFocus();
+            jetHabitaciones1.requestFocus();
 
         }
 
         else if (cost.isEmpty()){
             Toast.makeText(getApplicationContext(),"El campo 'Precio' debe ser diligenciado",Toast.LENGTH_LONG).show();
-            jetPrecio.requestFocus();
+            jetPrecio1.requestFocus();
 
         }
 
 
 
-        DocumentReference docRef = db2.collection("Apartaments").document(owner);
+        DocumentReference docRef = db.collection("Apartaments").document(owner);
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -175,23 +173,6 @@ public class RegistroAptoActivity extends AppCompatActivity {
                                 });
 
 
-                       /* db.collection("Apartaments").document(owner)
-                                .set(apartament)
-                                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                    @Override
-                                    public void onSuccess(Void aVoid) {
-                                        Log.d("Registro ok", "DocumentSnapshot successfully written!");
-                                        Toast.makeText(getApplicationContext(),"Apartamento creado",Toast.LENGTH_LONG).show();
-
-                                    }
-                                })
-                                .addOnFailureListener(new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e) {
-                                        Log.w("Registro ko", "Error writing document", e);
-                                    }
-                                });*/
-
 
 
 
@@ -206,8 +187,10 @@ public class RegistroAptoActivity extends AppCompatActivity {
 
         });
 
+
+
     }
 
+*/
 
 }
-

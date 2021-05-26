@@ -4,30 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegistroAptoActivity">
+    tools:context=".editarAptoActivity">
 
     <ScrollView
-        android:layout_width="380dp"
-        android:layout_height="715dp"
-        android:background="@color/cardview_light_background"
+        android:layout_width="383dp"
+        android:layout_height="679dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintHorizontal_bias="0.596"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/cardview_light_background"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:cardBackgroundColor="@color/Propio"
-                app:cardCornerRadius="30dp">
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/Propio"
+                android:backgroundTint="@color/Propio">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -115,7 +112,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="15dp"
                             android:gravity="center"
-                            android:text="Ingresar Apartamento"
+                            android:text="Editar Apartamento"
                             android:textSize="24sp"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -226,16 +223,14 @@
                             android:textSize="17sp" />
 
                         <EditText
-                            android:id="@+id/etHabitaciones"
-                            android:layout_width="42dp"
+                            android:id="@+id/etHabitaciones1"
+                            android:layout_width="63dp"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
                             android:layout_weight="1"
                             android:background="@drawable/bordes_textos"
                             android:ems="10"
-                            android:inputType="textPersonName"
-                            android:paddingLeft="10dp"
-                            android:textSize="16sp" />
+                            android:inputType="number" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -255,16 +250,14 @@
                             android:textSize="17sp" />
 
                         <EditText
-                            android:id="@+id/etPrecio"
+                            android:id="@+id/etPrecio1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
                             android:layout_weight="1"
                             android:background="@drawable/bordes_textos"
                             android:ems="10"
-                            android:inputType="textPersonName"
-                            android:paddingLeft="10dp"
-                            android:textSize="16sp" />
+                            android:inputType="number" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -311,8 +304,8 @@
                             android:layout_marginRight="5dp"
                             android:background="@drawable/bordes_botones"
                             android:gravity="center"
-                            android:onClick="CrearApto"
-                            android:text="Crear" />
+                            android:onClick="actualizarApto"
+                            android:text="Actualizar" />
 
                         <Button
                             android:id="@+id/btnRegresar"
@@ -324,10 +317,7 @@
                     </LinearLayout>
 
                 </LinearLayout>
-
-
             </androidx.cardview.widget.CardView>
-
         </LinearLayout>
     </ScrollView>
 
