@@ -89,6 +89,8 @@ public class MainActivity extends AppCompatActivity {
 
                                      Intent intent = new Intent(getApplicationContext(), UsuarioActivity.class);
                                      intent.putExtra("coleccion", usuario);
+                                     intent.putExtra("rol", rol);
+                                     intent.putExtra("password", password);
                                      //guardarPreferencias();
                                      startActivity(intent);
 
@@ -97,8 +99,7 @@ public class MainActivity extends AppCompatActivity {
                                  else if (rol.equals("Invitado")){
                                     Intent intent = new Intent(getApplicationContext(), Usuario_invitado_Activity.class);
                                     intent.putExtra("coleccion", usuario);
-                                    //guardarPreferencias();
-                                    startActivity(intent);
+                                     startActivity(intent);
 
                                 }
                                 jetClave.setText("");

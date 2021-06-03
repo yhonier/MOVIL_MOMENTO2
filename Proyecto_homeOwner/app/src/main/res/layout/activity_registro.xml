@@ -261,7 +261,7 @@
                             android:textSize="17sp" />
 
                         <EditText
-                            android:id="@+id/etClaveNueva3"
+                            android:id="@+id/etClaveNueva"
                             android:layout_width="249dp"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
@@ -286,7 +286,7 @@
                             android:layout_weight="1"
                             android:background="@drawable/bordes_botones"
                             android:gravity="center"
-                            android:onClick="Registrar"
+                            android:onClick="prueba"
                             android:text="Registrarse"
                             android:textAllCaps="false" />
                     </LinearLayout>

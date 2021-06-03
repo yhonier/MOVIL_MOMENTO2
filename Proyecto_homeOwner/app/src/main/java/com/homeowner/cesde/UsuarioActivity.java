@@ -35,7 +35,7 @@ public class UsuarioActivity extends AppCompatActivity {
     TextView jtvrol,jTvNombre;
     RecyclerView jrvFirestoreApartamentsList;
 
-    String email;
+    String email,rol,password;
 
 
 
@@ -52,12 +52,16 @@ public class UsuarioActivity extends AppCompatActivity {
         jTvNombre=findViewById(R.id.etNombre);
         jtvrol=findViewById(R.id.rol);
 
+
         jrvFirestoreApartamentsList=findViewById(R.id.rvFirestoreApartamentsList);
 
 
 
 
         email=getIntent().getStringExtra("coleccion");
+        rol=getIntent().getStringExtra("rol");
+        password=getIntent().getStringExtra("password");
+
 
 
         DocumentReference docRef = db.collection("users").document(getIntent().getStringExtra("coleccion"));
@@ -139,6 +143,7 @@ public class UsuarioActivity extends AppCompatActivity {
                     public void onClick(View v) {
                         Intent intent= new Intent(UsuarioActivity.this,editarAptoActivity.class);
                         intent.putExtra("id",id);
+
                         startActivity(intent);
                     }
                 });
@@ -147,6 +152,10 @@ public class UsuarioActivity extends AppCompatActivity {
                   holder.itemView.setOnClickListener(new View.OnClickListener() {
                      @Override
                      public void onClick(View v) {
+
+
+
+
 
                      }
                   });
@@ -209,7 +218,6 @@ public class UsuarioActivity extends AppCompatActivity {
 
 
 
-
     public void borrarApto (String id){
 
         db.collection("Apartaments").document(id)
@@ -235,7 +243,17 @@ public class UsuarioActivity extends AppCompatActivity {
     }
 
 
+    public void AcutualizarDatos (View view){
 
+
+
+        Intent intent= new Intent(UsuarioActivity.this, acutalizarUsuarioAnfitrionActivity.class);
+        intent.putExtra("coleccion",email);
+        intent.putExtra("rol",rol);
+        intent.putExtra("password",password);
+        startActivity(intent);
+
+    }
 
 
 

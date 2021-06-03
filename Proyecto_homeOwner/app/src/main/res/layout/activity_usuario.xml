@@ -143,7 +143,7 @@
                                         android:layout_weight="1"
                                         android:background="@drawable/bordes_textos"
                                         android:gravity="center"
-                                        android:onClick="AlertaEliminarApto"
+                                        android:onClick="AcutualizarDatos"
                                         android:text="Actualizar datos de usuario"
                                         android:textColor="#050505"
                                         android:textSize="18sp"

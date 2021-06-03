@@ -3,11 +3,13 @@ package com.homeowner.cesde;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -24,6 +26,8 @@ import java.util.Map;
 
 public class editarAptoActivity extends AppCompatActivity {
 
+
+    TextView jtvtvEmail;
     EditText jetPais,jetCiudad1,jetDireccion,jetHabitaciones1,jetPrecio1,jetDescripcion;
     Button jbtnActualizar,jbtnRegresar;
 
@@ -44,7 +48,7 @@ public class editarAptoActivity extends AppCompatActivity {
         jetDescripcion=findViewById(R.id.etDescripcion);
         jbtnActualizar=findViewById(R.id.btnActualizar1);
         jbtnRegresar=findViewById(R.id.btnRegresar);
-
+        jtvtvEmail=findViewById(R.id.tvEmail);
 
 
 
@@ -65,6 +69,7 @@ public class editarAptoActivity extends AppCompatActivity {
                         String habitaciones=document.getString("bedrooms");
                         String precio=document.getString("priceNight");
                         String descripcion=document.getString("description");
+                        String owner=document.getString("owner");
 
                         jetPais.setText(pais);
                         jetCiudad1.setText(ciudad);
@@ -72,10 +77,13 @@ public class editarAptoActivity extends AppCompatActivity {
                         jetHabitaciones1.setText(habitaciones);
                         jetPrecio1.setText(precio);
                         jetDescripcion.setText(descripcion);
+                        jtvtvEmail.setText(owner);
+
+
 
 
                     } else {
-                        Log.d("mensaje2", "No such document");
+                        Log.d("Ese id no existe", "No such document");
                     }
                 } else {
                     Log.d("No conecta a la Bd", "get failed with ", task.getException());
@@ -87,23 +95,21 @@ public class editarAptoActivity extends AppCompatActivity {
 
 
 
- /*   public void actualizarApto (View view){
+  public void actualizarApto (View view){
 
-        Toast.makeText(getApplicationContext(),"boton presionado", Toast.LENGTH_SHORT).show();
+      final String country,city,adress,cost, bedrooms,description,owner;
 
-        final String country,city,adress,cost, bedrooms,description,owner;
-
-        country= jetPais.getText().toString();
-        city=jetCiudad1.getText().toString();
-        adress=jetDireccion.getText().toString();
-        cost=jetPrecio1.getText().toString();
-        description=jetDescripcion.getText().toString();
-        bedrooms=jetHabitaciones1.getText().toString();
-
+      country= jetPais.getText().toString();
+      city=jetCiudad1.getText().toString();
+      adress=jetDireccion.getText().toString();
+      cost=jetPrecio1.getText().toString();
+      description=jetDescripcion.getText().toString();
+      bedrooms=jetHabitaciones1.getText().toString();
+      owner=jtvtvEmail.getText().toString();
 
 
 
-        if (country.isEmpty() ){
+      if (country.isEmpty() ){
 
             Toast.makeText(getApplicationContext(),"El campo 'Pais' debe ser diligenciado",Toast.LENGTH_LONG).show();
             jetPais.requestFocus();
@@ -132,65 +138,60 @@ public class editarAptoActivity extends AppCompatActivity {
 
 
 
-        DocumentReference docRef = db.collection("Apartaments").document(owner);
-        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()) {
-                    DocumentSnapshot document = task.getResult();
-                    if (document.exists()) {
 
 
-                    }
-                    else {
-
-                        Map<String, Object> apartament = new HashMap<>();
-
-                        apartament.put("country",country );
-                        apartament.put("city", city);
-                        apartament.put("bedrooms", bedrooms);
-                        apartament.put("adress", adress);
-                        apartament.put("priceNight", cost);
-                        apartament.put("description", description);
-                        apartament.put("state", "Disponible");
-                        apartament.put("client", "");
-                        apartament.put("owner", owner);
-
-                        db.collection("Apartaments")
-                                .add(apartament)
-                                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                                    @Override
-                                    public void onSuccess(DocumentReference documentReference) {
-                                        Log.d("ingresado correctamente", "DocumentSnapshot added with ID: " + documentReference.getId());
-                                        Toast.makeText(getApplicationContext(),"Datos ingresados correctamente",Toast.LENGTH_SHORT).show();
-                                    }
-                                })
-                                .addOnFailureListener(new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e) {
-                                        Log.w("Hola2", "Error adding document", e);
-                                    }
-                                });
+      String apto=getIntent().getStringExtra("id");
 
 
 
 
 
+      Map<String, Object> apartament = new HashMap<>();
 
-                    }
-                }
+      apartament.put("country",country );
+      apartament.put("city", city);
+      apartament.put("bedrooms", bedrooms);
+      apartament.put("adress", adress);
+      apartament.put("priceNight", cost);
+      apartament.put("description", description);
+      apartament.put("state", "Disponible");
+      apartament.put("client", "");
+      apartament.put("owner", owner);
 
 
+      db.collection("Apartaments").document(apto)
+              .set(apartament)
+              .addOnSuccessListener(new OnSuccessListener<Void>() {
+                  @Override
+                  public void onSuccess(Void aVoid) {
+                      Toast.makeText(getApplicationContext(),"Apartamento actualizado",Toast.LENGTH_SHORT).show();
 
-            }
+                      Intent intent= new Intent(getApplicationContext(),UsuarioActivity.class);
+                      intent.putExtra("coleccion",owner);
+                      startActivity(intent);
+                  }
+              })
+              .addOnFailureListener(new OnFailureListener() {
+                  @Override
+                  public void onFailure(@NonNull Exception e) {
 
-
-        });
+                  }
+              });
 
 
 
     }
 
-*/
+
+
+  public void regresar (View view){
+     String owner=jtvtvEmail.getText().toString();
+
+      Intent intent= new Intent(getApplicationContext(),UsuarioActivity.class);
+      intent.putExtra("coleccion",owner);
+      startActivity(intent);
+
+  }
+
 
 }
