@@ -1,25 +1,33 @@
 package com.homeowner.cesde;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import Modelos.ApartamentosModelo;
 
@@ -79,7 +87,7 @@ public class Usuario_invitado_Activity extends AppCompatActivity {
         });
 
 
-        Query query=db.collection("Apartaments");
+        Query query=db.collection("Apartaments").whereEqualTo("state","Disponible");
 
         FirestoreRecyclerOptions<ApartamentosModelo> options= new FirestoreRecyclerOptions.Builder<ApartamentosModelo>()
                 .setQuery(query, ApartamentosModelo.class).build();
@@ -98,9 +106,51 @@ public class Usuario_invitado_Activity extends AppCompatActivity {
                 holder.tvVnoche.setText(model.getPriceNight());
                 holder.TvEstado.setText(model.getState());
 
+                final String id=getSnapshots().getSnapshot(position).getId();
+
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+
+                        AlertDialog.Builder builder = new AlertDialog.Builder(Usuario_invitado_Activity.this);
+                        builder.setTitle("Reservar Apartamento.");
+                        builder.setMessage("Deesea Reservar este Apartamento?")
+                                .setPositiveButton("Sí", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+
+
+
+                                        Map<String, Object> reserva = new HashMap<>();
+
+                                        reserva.put("state","Reservado" );
+                                        reserva.put("client",email );
+
+
+                                        db.collection("Apartaments").document(id).update(reserva);
+
+
+
+
+
+
+
+
+
+
+
+
+                                        Toast.makeText(getApplicationContext(),"Apartamento reservado"
+                                        ,Toast.LENGTH_LONG).show();
+
+                                    }
+                                })
+                                .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.dismiss();
+                                    }
+                                }).show();
 
                     }
                 });
@@ -111,7 +161,7 @@ public class Usuario_invitado_Activity extends AppCompatActivity {
             @NonNull
             @Override
             public UsuarioActivity.ApartamentsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.apartament_list,parent,false);
+                View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.apartament_list_invitado1,parent,false);
 
 
                 return new UsuarioActivity.ApartamentsViewHolder(view);
@@ -157,6 +207,14 @@ public class Usuario_invitado_Activity extends AppCompatActivity {
         super.onStop();
 
         adapter.stopListening();
+    }
+
+    public void reservarApto(){
+
+
+
+
+
     }
 
 }
