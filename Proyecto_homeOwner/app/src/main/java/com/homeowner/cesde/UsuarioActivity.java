@@ -59,6 +59,7 @@ public class UsuarioActivity extends AppCompatActivity {
 
 
         email=getIntent().getStringExtra("coleccion");
+
         rol=getIntent().getStringExtra("rol");
         password=getIntent().getStringExtra("password");
 
@@ -79,7 +80,7 @@ public class UsuarioActivity extends AppCompatActivity {
                         jtvrol.setText(rol);
 
                     } else {
-                        Log.d("mensaje2", "No such document");
+                        Log.d("no encuentra", "No such document");
                     }
                 } else {
                     Log.d("Mensaje3", "get failed with ", task.getException());

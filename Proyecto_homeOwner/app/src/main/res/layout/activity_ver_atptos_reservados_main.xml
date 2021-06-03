@@ -4,16 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Usuario_invitado_Activity">
+    tools:context=".verAtptosReservadosMainActivity">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -133,20 +137,6 @@
                                         android:orientation="vertical">
 
                                         <TextView
-                                            android:id="@+id/textView18"
-                                            android:layout_width="238dp"
-                                            android:layout_height="wrap_content"
-                                            android:layout_marginBottom="10dp"
-                                            android:layout_weight="1"
-                                            android:background="@drawable/bordes_textos"
-                                            android:gravity="center"
-                                            android:onClick="actualizarDatos"
-                                            android:text="Actualizar datos de usuario"
-                                            android:textColor="#050505"
-                                            android:textSize="18sp"
-                                            android:textStyle="bold|italic" />
-
-                                        <TextView
                                             android:id="@+id/textView12"
                                             android:layout_width="227dp"
                                             android:layout_height="wrap_content"
@@ -154,8 +144,21 @@
                                             android:layout_weight="1"
                                             android:background="@drawable/bordes_textos"
                                             android:gravity="center"
-                                            android:onClick="irAptosReservados"
                                             android:text="Apartamentos reservados"
+                                            android:textColor="#050505"
+                                            android:textSize="18sp"
+                                            android:textStyle="bold|italic" />
+
+                                        <TextView
+                                            android:id="@+id/textView18"
+                                            android:layout_width="111dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginBottom="10dp"
+                                            android:layout_weight="1"
+                                            android:background="@drawable/bordes_textos"
+                                            android:gravity="center"
+                                            android:onClick="ActivarDatos"
+                                            android:text="Regresar"
                                             android:textColor="#050505"
                                             android:textSize="18sp"
                                             android:textStyle="bold|italic" />

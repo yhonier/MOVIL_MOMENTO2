@@ -19,8 +19,6 @@ import android.widget.Toast;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -32,44 +30,35 @@ import java.util.Map;
 
 import Modelos.ApartamentosModelo;
 
-public class Usuario_invitado_Activity extends AppCompatActivity {
+public class verAtptosReservadosMainActivity extends AppCompatActivity {
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
+
     FirestoreRecyclerAdapter adapter;
 
-    TextView jtvrol,jTvNombre;
+    TextView jtvNombre1,jtvrol;
     RecyclerView jrvFirestoreApartamentsList;
 
-    String email,rol,password;
-
-
-
+    String email;
 
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_usuario_invitado_);
-        //String email2=getIntent().getStringExtra("coleccion");
-
+        setContentView(R.layout.activity_ver_atptos_reservados_main);
         getSupportActionBar().hide();
 
-        jTvNombre=findViewById(R.id.etNombre);
+        jtvNombre1=findViewById(R.id.etNombre);
         jtvrol=findViewById(R.id.rol);
-
         jrvFirestoreApartamentsList=findViewById(R.id.rvFirestoreApartamentsList);
 
 
+        email=getIntent().getStringExtra("usuario");
 
 
-        email=getIntent().getStringExtra("coleccion");
+      DocumentReference docRef = db.collection("users").document(getIntent().getStringExtra("usuario"));
 
-        rol=getIntent().getStringExtra("rol");
-        password=getIntent().getStringExtra("password");
-
-
-        DocumentReference docRef = db.collection("users").document(getIntent().getStringExtra("coleccion"));
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -80,20 +69,22 @@ public class Usuario_invitado_Activity extends AppCompatActivity {
                         String nombre=document.getString("Name");
                         String rol=document.getString("Rol");
 
-                        jTvNombre.setText(nombre);
+                        jtvNombre1.setText(nombre);
                         jtvrol.setText(rol);
 
                     } else {
-                        Log.d("mensaje2", "No such document");
+                        Log.d("no encuentra", "No such document");
+                        Toast.makeText(verAtptosReservadosMainActivity.this, "No encuentra usuario", Toast.LENGTH_SHORT).show();
+
                     }
                 } else {
                     Log.d("Mensaje3", "get failed with ", task.getException());
+                    Toast.makeText(verAtptosReservadosMainActivity.this, "No encuentra coleccion", Toast.LENGTH_SHORT).show();
                 }
             }
         });
 
-
-        Query query=db.collection("Apartaments").whereEqualTo("state","Disponible");
+        Query query=db.collection("Apartaments").whereEqualTo("state","Reservado").whereEqualTo("client",email);
 
         FirestoreRecyclerOptions<ApartamentosModelo> options= new FirestoreRecyclerOptions.Builder<ApartamentosModelo>()
                 .setQuery(query, ApartamentosModelo.class).build();
@@ -114,40 +105,31 @@ public class Usuario_invitado_Activity extends AppCompatActivity {
 
                 final String id=getSnapshots().getSnapshot(position).getId();
 
+
+
+
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
 
-                        AlertDialog.Builder builder = new AlertDialog.Builder(Usuario_invitado_Activity.this);
+                        AlertDialog.Builder builder = new AlertDialog.Builder(verAtptosReservadosMainActivity.this);
                         builder.setTitle("Reservar Apartamento.");
-                        builder.setMessage("Deesea Reservar este Apartamento?")
+                        builder.setMessage("Deesea Descartar este Apartamento?")
                                 .setPositiveButton("Sí", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
 
 
-
                                         Map<String, Object> reserva = new HashMap<>();
 
-                                        reserva.put("state","Reservado" );
-                                        reserva.put("client",email );
+                                        reserva.put("state","Disponible" );
+                                        reserva.put("client","");
 
 
                                         db.collection("Apartaments").document(id).update(reserva);
 
-
-
-
-
-
-
-
-
-
-
-
-                                        Toast.makeText(getApplicationContext(),"Apartamento reservado"
-                                        ,Toast.LENGTH_LONG).show();
+                                        Toast.makeText(getApplicationContext(),"DescartadoApartamento"
+                                                ,Toast.LENGTH_LONG).show();
 
                                     }
                                 })
@@ -177,6 +159,7 @@ public class Usuario_invitado_Activity extends AppCompatActivity {
         jrvFirestoreApartamentsList.setHasFixedSize(true);
         jrvFirestoreApartamentsList.setLayoutManager(new LinearLayoutManager(this));
         jrvFirestoreApartamentsList.setAdapter(adapter);
+
 
     }
 
@@ -215,32 +198,15 @@ public class Usuario_invitado_Activity extends AppCompatActivity {
         adapter.stopListening();
     }
 
-    public void irAptosReservados(View view){
+    public void regresar(View view){
 
-        Intent intent= new Intent(getApplicationContext(),
-                verAtptosReservadosMainActivity.class);
-        intent.putExtra("usuario",email);
-
-        startActivity(intent);
-
-
-
+        Intent intent= new Intent(verAtptosReservadosMainActivity.this,Usuario_invitado_Activity.class);
+   //intent.putExtra(email);
+    startActivity(intent);
 
     }
 
-    public void actualizarDatos (View view){
-
-        Intent intent= new Intent(getApplicationContext(),
-                actualizarUsuarioInvitadoMainActivity.class);
-        intent.putExtra("usuario",email);
-        intent.putExtra("rol",rol);
-        intent.putExtra("password",password);
-
-        startActivity(intent);
 
 
-
-
-    }
 
 }

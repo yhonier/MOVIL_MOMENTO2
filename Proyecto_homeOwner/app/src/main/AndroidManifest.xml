@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".acutalizarUsuarioAnfitrionActivity"></activity>
+        <activity android:name=".actualizarUsuarioInvitadoMainActivity"></activity>
+        <activity android:name=".verAtptosReservadosMainActivity" />
+        <activity android:name=".acutalizarUsuarioAnfitrionActivity" />
         <activity android:name=".editarAptoActivity" />
         <activity android:name=".Usuario_invitado_Activity" />
         <activity android:name=".RegistroAptoActivity" />
