@@ -38,8 +38,11 @@ public class verAtptosReservadosMainActivity extends AppCompatActivity {
 
     TextView jtvNombre1,jtvrol;
     RecyclerView jrvFirestoreApartamentsList;
-
     String email;
+    /* =getIntent().getStringExtra("usuario");;
+      String rol=getIntent().getStringExtra("rol");
+      String password=getIntent().getStringExtra("password");*/
+
 
 
 
@@ -201,7 +204,10 @@ public class verAtptosReservadosMainActivity extends AppCompatActivity {
     public void regresar(View view){
 
         Intent intent= new Intent(verAtptosReservadosMainActivity.this,Usuario_invitado_Activity.class);
-   //intent.putExtra(email);
+      //  intent.putExtra("usuario",email);
+      //  intent.putExtra("rol",rol);
+       // intent.putExtra("password",password);
+
     startActivity(intent);
 
     }

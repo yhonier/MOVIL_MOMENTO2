@@ -81,7 +81,6 @@ public class MainActivity extends AppCompatActivity {
                         if (document.exists()) {
                             Log.d("Mensaje1", "DocumentSnapshot data: " + document.getData());
                             String password = document.getString("Password");
-                            Toast.makeText(MainActivity.this, "usuario existe", Toast.LENGTH_SHORT).show();
 
                             if (password.equals(clave)) {
                                 String rol = document.getString("Rol");
@@ -126,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
                     } else {
 
                         Log.d("Mensaje3", "get failed with ", task.getException());
-                        Toast.makeText(getApplicationContext(), "Usuario no extiste, por favor confirmar", Toast.LENGTH_LONG).show();
+                       // Toast.makeText(getApplicationContext(), "Usuario no extiste, por favor confirmar", Toast.LENGTH_LONG).show();
 
                         jetUsuario.requestFocus();
                         jetClave.setText("");

@@ -13,7 +13,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -21,8 +22,8 @@
                 android:orientation="vertical">
 
                 <androidx.cardview.widget.CardView
-                    android:layout_width="387dp"
-                    android:layout_height="680dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="682dp"
                     android:layout_margin="10dp"
                     android:padding="8dp"
                     app:cardBackgroundColor="@color/Propio"
@@ -44,7 +45,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="45dp"
                                 android:layout_marginBottom="8dp"
-                                android:background="@color/Propio"
+                                android:background="#0097a7"
                                 android:orientation="horizontal"
                                 android:paddingTop="4dp"
                                 android:paddingBottom="4dp">
@@ -72,7 +73,7 @@
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:background="#0097a7"
+                                android:background="@color/Propio"
                                 android:orientation="vertical">
 
                                 <LinearLayout
@@ -80,7 +81,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginBottom="10dp"
-                                    android:background="#0097a7"
+                                    android:background="@color/Propio"
                                     android:gravity="right"
                                     android:orientation="horizontal"
                                     android:paddingLeft="8dp"
@@ -90,7 +91,7 @@
                                         android:id="@+id/etNombre"
                                         android:layout_width="239dp"
                                         android:layout_height="wrap_content"
-                                        android:background="#0097a7"
+                                        android:background="@color/Propio"
                                         android:foregroundTint="#020202"
                                         android:text="TextView"
                                         android:textStyle="bold" />
@@ -100,7 +101,7 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_weight="1"
-                                        android:background="#0097a7"
+                                        android:background="@color/Propio"
                                         android:gravity="right"
                                         android:text="TextView"
                                         android:textStyle="bold" />
@@ -113,7 +114,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="10dp"
                                     android:layout_marginTop="10dp"
-                                    android:background="#0097a7  "
+                                    android:background="@color/Propio"
                                     android:orientation="horizontal">
 
                                     <ImageView
@@ -122,6 +123,7 @@
                                         android:layout_height="match_parent"
                                         android:layout_marginRight="11dp"
                                         android:layout_weight="1"
+                                        android:background="@color/Propio"
                                         android:foreground="@drawable/ic_visitor_home"
                                         app:srcCompat="@drawable/ic_sol" />
 
@@ -129,6 +131,7 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:layout_weight="1"
+                                        android:background="@color/Propio"
                                         android:gravity="center"
                                         android:orientation="vertical">
 
@@ -175,7 +178,7 @@
 
                             <androidx.recyclerview.widget.RecyclerView
                                 android:id="@+id/rvFirestoreApartamentsList"
-                                android:layout_width="match_parent"
+                                android:layout_width="369dp"
                                 android:layout_height="match_parent" />
                         </LinearLayout>
                     </LinearLayout>

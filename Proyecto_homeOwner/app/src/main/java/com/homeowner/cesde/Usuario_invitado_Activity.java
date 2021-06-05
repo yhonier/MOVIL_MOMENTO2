@@ -51,7 +51,6 @@ public class Usuario_invitado_Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_usuario_invitado_);
-        //String email2=getIntent().getStringExtra("coleccion");
 
         getSupportActionBar().hide();
 
@@ -64,9 +63,9 @@ public class Usuario_invitado_Activity extends AppCompatActivity {
 
 
         email=getIntent().getStringExtra("coleccion");
-
-        rol=getIntent().getStringExtra("rol");
         password=getIntent().getStringExtra("password");
+
+
 
 
         DocumentReference docRef = db.collection("users").document(getIntent().getStringExtra("coleccion"));
@@ -134,18 +133,6 @@ public class Usuario_invitado_Activity extends AppCompatActivity {
 
 
                                         db.collection("Apartaments").document(id).update(reserva);
-
-
-
-
-
-
-
-
-
-
-
-
                                         Toast.makeText(getApplicationContext(),"Apartamento reservado"
                                         ,Toast.LENGTH_LONG).show();
 
@@ -233,7 +220,6 @@ public class Usuario_invitado_Activity extends AppCompatActivity {
         Intent intent= new Intent(getApplicationContext(),
                 actualizarUsuarioInvitadoMainActivity.class);
         intent.putExtra("usuario",email);
-        intent.putExtra("rol",rol);
         intent.putExtra("password",password);
 
         startActivity(intent);

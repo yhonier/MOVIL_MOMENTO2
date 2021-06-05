@@ -82,6 +82,7 @@
                             android:layout_weight="1"
                             android:background="@drawable/bordes_textos"
                             android:ems="10"
+                            android:hint="Name"
                             android:inputType="textPersonName"
                             android:paddingLeft="10dp"
                             android:textSize="16sp" />
@@ -111,6 +112,7 @@
                             android:layout_weight="1"
                             android:background="@drawable/bordes_textos"
                             android:ems="10"
+                            android:hint="Email"
                             android:inputType="textEmailAddress"
                             android:paddingLeft="10dp"
                             android:textSize="16sp" />
@@ -140,6 +142,7 @@
                             android:layout_weight="1"
                             android:background="@drawable/bordes_textos"
                             android:ems="10"
+                            android:hint="Country"
                             android:inputType="textPersonName"
                             android:paddingLeft="10dp"
                             android:textSize="16sp" />
@@ -170,6 +173,7 @@
                             android:layout_weight="1"
                             android:background="@drawable/bordes_textos"
                             android:ems="10"
+                            android:hint="City"
                             android:inputType="textPersonName"
                             android:paddingLeft="10dp"
                             android:textSize="16sp" />
@@ -286,7 +290,7 @@
                             android:layout_weight="1"
                             android:background="@drawable/bordes_botones"
                             android:gravity="center"
-                            android:onClick="prueba"
+                            android:onClick="Registrar"
                             android:text="Registrarse"
                             android:textAllCaps="false" />
                     </LinearLayout>

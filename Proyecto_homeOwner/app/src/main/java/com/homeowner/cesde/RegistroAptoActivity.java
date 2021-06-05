@@ -53,7 +53,7 @@ public class RegistroAptoActivity extends AppCompatActivity {
 
 
 
-        //jtvEmail.setText("Apartamentes: "+getIntent().getStringExtra("coleccion"));
+        jtvEmail.setText("Usuraio: "+getIntent().getStringExtra("coleccion"));
 
         DocumentReference docRef = db.collection("users").document(getIntent().getStringExtra("coleccion"));
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {

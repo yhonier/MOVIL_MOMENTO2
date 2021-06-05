@@ -167,7 +167,7 @@ public class acutalizarUsuarioAnfitrionActivity extends AppCompatActivity {
                                     public void onSuccess(Void aVoid) {
                                         Toast.makeText(getApplicationContext(),"Datos actualizados",Toast.LENGTH_SHORT).show();
 
-                                        Intent intent= new Intent(getApplicationContext(),UsuarioActivity.class);
+                                        Intent intent= new Intent(getApplicationContext(),Usuario_invitado_Activity.class);
                                         intent.putExtra("coleccion",email);
                                         intent.putExtra("rol",rol);
                                         intent.putExtra("password",password);
@@ -231,7 +231,7 @@ public class acutalizarUsuarioAnfitrionActivity extends AppCompatActivity {
                         public void onSuccess(Void aVoid) {
                             Toast.makeText(getApplicationContext(),"Datos actualizados",Toast.LENGTH_SHORT).show();
 
-                            Intent intent= new Intent(getApplicationContext(),UsuarioActivity.class);
+                            Intent intent= new Intent(getApplicationContext(),Usuario_invitado_Activity.class);
                             intent.putExtra("coleccion",email);
                             intent.putExtra("rol",rol);
                             intent.putExtra("password",password);

@@ -30,16 +30,17 @@
                 app:cardCornerRadius="30dp">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="391dp"
                     android:layout_height="match_parent"
+                    android:layout_marginRight="10dp"
                     android:orientation="vertical">
 
                     <LinearLayout
                         android:id="@+id/Logo"
-                        android:layout_width="match_parent"
+                        android:layout_width="391dp"
                         android:layout_height="45dp"
                         android:layout_marginBottom="8dp"
-                        android:background="@color/Propio"
+                        android:background="#0097a7"
                         android:orientation="horizontal"
                         android:paddingTop="4dp"
                         android:paddingBottom="4dp">
@@ -77,22 +78,26 @@
 
                         <TextView
                             android:id="@+id/tvEmail"
-                            android:layout_width="279dp"
+                            android:layout_width="267dp"
                             android:layout_height="wrap_content"
-                            android:text="TextView" />
+                            android:text="TextView"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/tvRol"
-                            android:layout_width="98dp"
+                            android:layout_width="107dp"
                             android:layout_height="wrap_content"
-                            android:gravity="right" />
+                            android:gravity="right"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
 
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginTop="7dp"
+                        android:layout_marginTop="20dp"
                         android:layout_marginBottom="15dp"
                         android:gravity="center"
                         android:orientation="vertical">
@@ -101,7 +106,10 @@
                             android:id="@+id/tvNombre"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="TextView" />
+                            android:text="TextView"
+                            android:textColor="#F6F0F0"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
 
                         <ImageView
                             android:id="@+id/imageView4"
@@ -116,6 +124,7 @@
                             android:layout_marginTop="15dp"
                             android:gravity="center"
                             android:text="Ingresar Apartamento"
+                            android:textColor="@color/common_google_signin_btn_text_dark_default"
                             android:textSize="24sp"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -142,6 +151,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
+                            android:layout_marginRight="30dp"
                             android:layout_weight="1"
                             android:background="@drawable/bordes_textos"
                             android:ems="10"
@@ -172,6 +182,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
+                            android:layout_marginRight="30dp"
                             android:layout_weight="1"
                             android:background="@drawable/bordes_textos"
                             android:ems="10"
@@ -202,6 +213,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
+                            android:layout_marginRight="30dp"
                             android:layout_weight="1"
                             android:background="@drawable/bordes_textos"
                             android:ems="10"
@@ -211,60 +223,70 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:orientation="vertical">
+                        android:orientation="horizontal">
 
-                        <TextView
-                            android:id="@+id/textView34"
+                        <LinearLayout
+                            android:layout_width="192dp"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/textView34"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_weight="1"
+                                android:text="# Habitaciones:"
+                                android:textColor="#0B0B0B"
+                                android:textSize="17sp" />
+
+                            <EditText
+                                android:id="@+id/etHabitaciones"
+                                android:layout_width="60dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/bordes_textos"
+                                android:ems="10"
+                                android:inputType="textPersonName"
+                                android:paddingLeft="10dp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:layout_weight="1"
-                            android:text="Nro de Habitaciones:"
-                            android:textColor="#0B0B0B"
-                            android:textSize="17sp" />
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="5dp"
+                            android:orientation="vertical">
 
-                        <EditText
-                            android:id="@+id/etHabitaciones"
-                            android:layout_width="42dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/bordes_textos"
-                            android:ems="10"
-                            android:inputType="textPersonName"
-                            android:paddingLeft="10dp"
-                            android:textSize="16sp" />
-                    </LinearLayout>
+                            <TextView
+                                android:id="@+id/textView30"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_weight="1"
+                                android:text="Precio por noche:"
+                                android:textColor="#0B0B0B"
+                                android:textSize="17sp"
+                                android:layout_marginRight="10dp" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginBottom="5dp"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/textView30"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:layout_weight="1"
-                            android:text="Precio por noche:"
-                            android:textColor="#0B0B0B"
-                            android:textSize="17sp" />
-
-                        <EditText
-                            android:id="@+id/etPrecio"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/bordes_textos"
-                            android:ems="10"
-                            android:inputType="textPersonName"
-                            android:paddingLeft="10dp"
-                            android:textSize="16sp" />
+                            <EditText
+                                android:id="@+id/etPrecio"
+                                android:layout_width="138dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/bordes_textos"
+                                android:ems="10"
+                                android:inputType="textPersonName"
+                                android:paddingLeft="10dp" />
+                        </LinearLayout>
                     </LinearLayout>
 
                     <LinearLayout
@@ -285,9 +307,10 @@
 
                         <EditText
                             android:id="@+id/etDescripcion"
-                            android:layout_width="369dp"
+                            android:layout_width="352dp"
                             android:layout_height="75dp"
                             android:layout_marginLeft="10dp"
+                            android:layout_marginRight="70dp"
                             android:layout_weight="1"
                             android:background="@drawable/bordes_textos"
                             android:ems="10"
